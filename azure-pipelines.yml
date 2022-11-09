@@ -27,11 +27,12 @@ steps:
 - script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
   displayName: 'Compile Sass assets'
 
+- task: gulp@1
   inputs:
     gulpFile: 'C:\Users\MI\source\repos\PiranhaRazor2\PiranhaRazor2\gulpfile.js'
     targets: 
-    workingDirectory: 'C:\Users\MI\source\repos\PiranhaRazor2\PiranhaRazor2\'
     enableCodeCoverage: false
+  displayName: 'Run gulp tasks'
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
